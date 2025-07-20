@@ -1,0 +1,308 @@
+/* static/css/style.css */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&family=Poppins:wght@300&family=Great+Vibes&display=swap');
+
+/* --- Keyframe Animations --- */
+@keyframes animate-stars {
+    from { transform: translateY(0px); }
+    to { transform: translateY(-2000px); }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+@keyframes fade-in {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Starfield Background --- */
+.stars {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 200%;
+    z-index: -1;
+}
+
+#stars {
+    background-image: radial-gradient(1px 1px at 20px 30px, #eee, transparent), radial-gradient(1px 1px at 40px 70px, #fff, transparent), radial-gradient(1px 1px at 50px 160px, #ddd, transparent), radial-gradient(1px 1px at 90px 40px, #fff, transparent), radial-gradient(2px 2px at 130px 80px, #fff, transparent), radial-gradient(2px 2px at 160px 120px, #ddd, transparent);
+    background-size: 200px 200px;
+    animation: animate-stars 150s linear infinite;
+}
+
+#stars2 {
+    background-image: radial-gradient(1px 1px at 10px 90px, #eee, transparent), radial-gradient(2px 2px at 30px 50px, #fff, transparent), radial-gradient(2px 2px at 80px 180px, #ddd, transparent), radial-gradient(1px 1px at 110px 10px, #fff, transparent), radial-gradient(2px 2px at 140px 100px, #fff, transparent), radial-gradient(2px 2px at 190px 140px, #ddd, transparent);
+    background-size: 300px 300px;
+    animation: animate-stars 100s linear infinite;
+}
+
+#stars3 {
+    background-image: radial-gradient(2px 2px at 5px 100px, #fff, transparent), radial-gradient(2px 2px at 25px 60px, #fff, transparent), radial-gradient(3px 3px at 75px 170px, #fff, transparent), radial-gradient(3px 3px at 115px 20px, #fff, transparent), radial-gradient(2px 2px at 155px 90px, #fff, transparent), radial-gradient(3px 3px at 185px 150px, #fff, transparent);
+    background-size: 400px 400px;
+    animation: animate-stars 75s linear infinite;
+}
+
+body {
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+    background-image: linear-gradient(rgba(10, 20, 40, 0.6), rgba(5, 10, 20, 0.8)), url('https://images.pexels.com/photos/1252890/pexels-photo-1252890.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    color: #f0f0f0;
+    font-family: 'Poppins', sans-serif;
+    min-height: 100vh;
+    text-align: center;
+    overflow-x: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.view {
+    width: 100%;
+    z-index: 1;
+}
+
+/* --- Before Birthday View --- */
+#before-birthday {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.animation-container {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.heart {
+    font-size: 5rem;
+    color: #FFFFFF;
+    text-shadow: 0 0 15px #ADD8E6;
+    animation: pulse 1.5s infinite ease-in-out;
+}
+
+.love-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.5rem;
+    margin-top: -20px;
+    color: #fff;
+    text-shadow: 0 0 10px #fff;
+}
+
+#countdown {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #FFFFFF;
+    text-shadow: 0 0 10px #ADD8E6;
+}
+
+#daily-message {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    margin-top: 20px;
+    max-width: 600px;
+    font-style: italic;
+    background-color: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(173, 216, 230, 0.4);
+    padding: 20px;
+    border-radius: 15px;
+    backdrop-filter: blur(8px);
+}
+
+/* --- Birthday Surprise View --- */
+#birthday-surprise h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 4.5rem;
+    color: #FFFFFF;
+    text-shadow: 0 0 20px #ADD8E6;
+    margin-bottom: 30px;
+}
+
+/* --- Slideshow with Cross-Fade --- */
+#slideshow-container {
+    position: relative;
+    max-width: 800px;
+    height: 70vh;
+    margin: 30px auto;
+    border: 2px solid rgba(173, 216, 230, 0.6);
+    border-radius: 15px;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(10px);
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.slide.active {
+    opacity: 1;
+}
+
+.slide img {
+    max-width: 100%;
+    max-height: 85%;
+    object-fit: contain;
+}
+
+.slide .caption {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    padding: 15px;
+    margin: 0;
+    font-style: italic;
+}
+
+#prev-btn, #next-btn {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 16px;
+    color: #FFFFFF;
+    font-weight: bold;
+    font-size: 20px;
+    background-color: rgba(0,0,0,0.5);
+    border: 1px solid rgba(173, 216, 230, 0.4);
+    user-select: none;
+    transition: background-color 0.3s ease;
+    z-index: 10;
+}
+
+#prev-btn:hover, #next-btn:hover {
+    background-color: rgba(173, 216, 230, 0.2);
+}
+
+#prev-btn { left: 10px; border-radius: 50%; width: 50px; height: 50px; }
+#next-btn { right: 10px; border-radius: 50%; width: 50px; height: 50px; }
+
+/* --- Love Letter with Handwritten Font --- */
+#letter-container {
+    max-width: 800px;
+    margin: 50px auto;
+    text-align: left;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(173, 216, 230, 0.4);
+    padding: 40px;
+    border-radius: 15px;
+    line-height: 1.8;
+    white-space: pre-wrap;
+    backdrop-filter: blur(10px);
+}
+
+#letter-container h2 {
+    text-align: center;
+    font-family: 'Cormorant Garamond', serif;
+    color: #FFFFFF;
+}
+
+.letter-body {
+    font-family: 'Great Vibes', cursive;
+    font-size: 2rem;
+    line-height: 2;
+}
+
+/* --- Bottom Controls Container (CHANGED) --- */
+#bottom-controls {
+    width: 90%;
+    max-width: 800px;
+    margin: 40px auto; /* Gives space from the letter container */
+    text-align: center; /* Use text-align to center contents */
+    animation: fade-in 2s ease-out;
+}
+
+#lyrics-container {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem;
+    font-style: italic;
+    color: #fff;
+    text-shadow: 0 0 8px black;
+    transition: all 0.5s ease-in-out;
+    text-align: center;
+    min-height: 30px;
+}
+
+/* --- Redesigned Play/Pause Button --- */
+#play-pause-button {
+    background-color: transparent;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: inline-flex; /* Changed for better centering */
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+}
+
+#play-pause-button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+#play-pause-button svg {
+    width: 20px;
+    height: 20px;
+    fill: #fff;
+}
+
+#play-pause-button .play-icon {
+    margin-left: 3px;
+}
+
+/* --- Initial "Play Surprise" Button --- */
+#play-surprise-button {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    color: #fff;
+    background-color: transparent;
+    border: 2px solid #fff;
+    padding: 15px 30px;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    animation: fade-in 2s ease-out;
+    margin-bottom: 30px;
+}
+
+#play-surprise-button:hover {
+    background-color: #fff;
+    color: #000;
+}
+
+
+/* --- Mobile Responsive Styles --- */
+@media (max-width: 600px) {
+  .love-text { font-size: 2rem; }
+  #countdown { font-size: 2.2rem; }
+  #daily-message { font-size: 1.2rem; padding: 15px; }
+  #birthday-surprise h1 { font-size: 3rem; }
+  #slideshow-container { height: 50vh; }
+  .slide .caption { font-size: 1.2rem; }
+  #letter-container { padding: 20px; margin: 20px; }
+  .letter-body { font-size: 1.5rem; }
+  #lyrics-container { font-size: 1.2rem; }
+  #play-surprise-button { font-size: 1.5rem; }
+  #play-pause-button { width: 40px; height: 40px; }
+  #play-pause-button svg { width: 15px; height: 15px; }
+  #prev-btn, #next-btn { width: 40px; height: 40px; }
+}
+

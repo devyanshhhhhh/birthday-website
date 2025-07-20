@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Surprise For You</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body data-slideshow='{{ slideshow_data | tojson | safe }}'>
+    <!-- Pure CSS Starfield Elements -->
+    <div id="stars" class="stars"></div>
+    <div id="stars2" class="stars"></div>
+    <div id="stars3" class="stars"></div>
+
+    <!-- Background Music -->
+    <audio id="background-music" loop>
+        <source src="" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <div id="before-birthday" class="view">
+        <div class="animation-container">
+            <div class="heart">❤️</div>
+            <div class="love-text">I Love You</div>
+        </div>
+        <h1 id="countdown"></h1>
+        <p id="daily-message">{{ daily_message }}</p>
+    </div>
+
+    <div id="birthday-surprise" class="view" style="display: none;">
+        <h1>Happy Birthday, {{ partner_name }}!</h1>
+        
+        <button id="play-surprise-button">Play Surprise</button>
+
+        <div id="slideshow-container" style="visibility: hidden;">
+            {% for slide in slideshow_data %}
+            <div class="slide">
+                <img src="{{ url_for('static', filename='images/' ~ slide.image) }}" alt="Memory">
+                <p class="caption">{{ slide.caption }}</p>
+            </div>
+            {% endfor %}
+            <button id="prev-btn">❮</button>
+            <button id="next-btn">❯</button>
+        </div>
+
+        <div id="letter-container" style="visibility: hidden;">
+            <h2>A Letter For You</h2>
+            <p class="letter-body">{{ love_letter }}</p>
+        </div>
+
+        <!-- Bottom Controls Container (Moved inside #birthday-surprise) -->
+        <div id="bottom-controls" style="visibility: hidden;">
+            <div id="lyrics-container"></div>
+            <button id="play-pause-button"></button>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
